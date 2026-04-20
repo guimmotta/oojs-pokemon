@@ -141,3 +141,7 @@ This project is intentionally simple to keep the concepts visible. Some ideas to
 ---
 
 *Built to revisit OOJS without modern abstractions — just JavaScript, prototypes, and `this`.*
+
+<div align="center">
+  <sub>Made with ❤️ by <a href="https://github.com/guimmotta">@guimmotta</a></sub>
+</div>

@@ -1,27 +1,27 @@
 # 🎮 Pokémon OOJS
 
-> Revisitando conceitos de Orientação a Objetos com JavaScript — sem classes, só protótipos.
+> Revisiting Object-Oriented JavaScript concepts — no classes, just prototypes.
 
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 ![OOP](https://img.shields.io/badge/OOP-Vanilla_JS-blue?style=flat-square)
-![Status](https://img.shields.io/badge/status-estudo-green?style=flat-square)
+![Status](https://img.shields.io/badge/status-learning-green?style=flat-square)
 
 ---
 
-## 📖 Sobre o projeto
+## 📖 About
 
-Um laboratório de estudo que usa o universo Pokémon para explorar os pilares de OOP com JavaScript puro. Cada conceito é aplicado de forma intencional: encapsulamento com closures, herança via `call()`, e compartilhamento de comportamento por referência de função — sem `class`, sem `extends`, só JavaScript de verdade.
+A study lab that uses the Pokémon universe to explore the pillars of OOP with plain JavaScript. Each concept is applied intentionally: encapsulation with closures, inheritance via `call()`, and behavior sharing through function references — no `class`, no `extends`, just JavaScript as it really works under the hood.
 
 ---
 
-## 🧠 Conceitos abordados
+## 🧠 Concepts covered
 
-### 🔒 Encapsulamento
-A propriedade `_level` é privada, acessível somente pelos métodos `getLevel()` e `levelUp()` definidos no constructor. Isso é feito via **closure** — a variável `_level` existe no escopo da função construtora e não é exposta diretamente no objeto.
+### 🔒 Encapsulation
+The `_level` property is private, accessible only through the `getLevel()` and `levelUp()` methods defined in the constructor. This is achieved via **closure** — `_level` lives in the constructor's scope and is never exposed directly on the object.
 
 ```js
 function Pokemon(name, type) {
-    let _level = 1; // privado via closure
+    let _level = 1; // private via closure
 
     this.getLevel = function() {
         return _level;
@@ -35,20 +35,20 @@ function Pokemon(name, type) {
 
 ---
 
-### 🧬 Herança com `call()`
-Cada Pokémon específico (Bulbassaur, Charmander, etc.) herda as propriedades base chamando `Pokemon.call(this, name, type)` dentro de seu próprio constructor. É a forma clássica de herança em JavaScript antes de `class`.
+### 🧬 Inheritance with `call()`
+Each specific Pokémon (Bulbassaur, Charmander, etc.) inherits base properties by calling `Pokemon.call(this, name, type)` inside its own constructor. This is the classic pre-`class` way of doing inheritance in JavaScript.
 
 ```js
 function Charmander(name, type) {
-    Pokemon.call(this, name, type); // herda name, type e métodos de Pokemon
+    Pokemon.call(this, name, type); // inherits name, type, and Pokemon methods
     this.evolve = evolve;
 }
 ```
 
 ---
 
-### 🔄 Comportamento compartilhado via referência
-A função `evolve()` é definida uma única vez e atribuída como método para todos os constructors. O comportamento é determinado em runtime pelo valor de `this.name`, tornando a mesma função responsiva a diferentes contextos de execução.
+### 🔄 Shared behavior via function reference
+The `evolve()` function is defined once and assigned as a method across all constructors. Its behavior is determined at runtime by the value of `this.name`, making the same function context-aware depending on which object calls it.
 
 ```js
 function evolve() {
@@ -61,83 +61,83 @@ function evolve() {
 
 ---
 
-### 📦 Escopo e contexto (`this`)
-O uso de `this` dentro de `evolve()` garante que a função sempre opera sobre o objeto que a chamou. Isso demonstra como o contexto de execução é fundamental para o funcionamento de métodos compartilhados em JavaScript.
+### 📦 Scope & context (`this`)
+Using `this` inside `evolve()` ensures the function always operates on the object that invoked it. This highlights how execution context is central to how shared methods work in JavaScript.
 
 ---
 
-## 🐾 Pokémon implementados
+## 🐾 Pokémon implemented
 
-| Cadeia | Tipos | Formas |
-|--------|-------|--------|
+| Chain | Type | Forms |
+|-------|------|-------|
 | 🌿 Bulbassaur | Grass/Poison | Bulbassaur → Ivysaur → Venusaur |
 | 🔥 Charmander | Fire | Charmander → Charmeleon → Charizard |
 | 💧 Squirtle | Water | Squirtle → Wartortle → Blastoise |
 
 ---
 
-## 🚀 Como usar
+## 🚀 Getting started
 
-Clone o repositório e execute com Node.js:
+Clone the repo and run it with Node.js:
 
 ```bash
 node pokemon.js
 ```
 
-Ou abra diretamente no navegador com um `<script>` tag e veja os logs no console.
+Or drop it into a `<script>` tag in any HTML file and check the browser console.
 
 ---
 
-## 🧪 Exemplo de uso
+## 🧪 Usage example
 
 ```js
-// Criando um starter
+// Pick your starter
 const starter = new Charmander("Charmander", "Fire");
 
-// Primeira evolução
+// First evolution
 const evolved = starter.evolve();
 // → "Charmander evolved into Charmeleon!"
 
-// Segunda evolução
+// Second evolution
 const final = evolved.evolve();
 // → "Charmeleon evolved into Charizard!"
 
-// Encapsulamento em ação
+// Encapsulation in action
 starter.levelUp();
 console.log(starter.getLevel()); // 2
-console.log(starter._level);     // undefined — propriedade privada!
+console.log(starter._level);     // undefined — private property!
 ```
 
 ---
 
-## 📂 Estrutura do código
+## 📂 Code structure
 
 ```
 pokemon.js
-├── Pokemon()          → constructor base com encapsulamento
-├── evolve()           → função compartilhada (comportamento por referência)
-├── Bulbassaur()       → herda de Pokemon, recebe evolve
-├── Ivysaur()          → herda de Pokemon, recebe evolve
-├── Venusaur()         → herda de Pokemon, recebe evolve
-├── Charmander()       → herda de Pokemon, recebe evolve
-├── Charmeleon()       → herda de Pokemon, recebe evolve
-├── Charizard()        → herda de Pokemon, recebe evolve
-├── Squirtle()         → herda de Pokemon, recebe evolve
-├── Wartortle()        → herda de Pokemon, recebe evolve
-└── Blastoise()        → herda de Pokemon, recebe evolve
+├── Pokemon()          → base constructor with encapsulation
+├── evolve()           → shared function (behavior by reference)
+├── Bulbassaur()       → extends Pokemon, receives evolve
+├── Ivysaur()          → extends Pokemon, receives evolve
+├── Venusaur()         → extends Pokemon, receives evolve
+├── Charmander()       → extends Pokemon, receives evolve
+├── Charmeleon()       → extends Pokemon, receives evolve
+├── Charizard()        → extends Pokemon, receives evolve
+├── Squirtle()         → extends Pokemon, receives evolve
+├── Wartortle()        → extends Pokemon, receives evolve
+└── Blastoise()        → extends Pokemon, receives evolve
 ```
 
 ---
 
-## 💡 Pontos de reflexão
+## 💡 Things to think about
 
-Este projeto é intencionalmente simples para deixar os conceitos visíveis. Algumas melhorias possíveis para evoluir o estudo:
+This project is intentionally simple to keep the concepts visible. Some ideas to take it further:
 
-- Usar `prototype` para compartilhar métodos sem recriar funções em cada instância
-- Substituir o `if/else` em `evolve()` por um mapa de evolução (`evolutionMap`)
-- Explorar a diferença entre herança prototipal e herança clássica com `class extends`
-- Adicionar `Object.defineProperty` para propriedades verdadeiramente não-enumeráveis
+- Use `prototype` to share methods without recreating functions on every instance
+- Replace the `if/else` chain in `evolve()` with an evolution map object (`evolutionMap`)
+- Explore the difference between prototypal and classical inheritance with `class extends`
+- Use `Object.defineProperty` for truly non-enumerable private properties
 
 ---
 
-*Feito para revisitar OOJS sem abstrações modernas — só JavaScript, protótipos e `this`.*
+*Built to revisit OOJS without modern abstractions — just JavaScript, prototypes, and `this`.*

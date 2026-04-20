@@ -1,5 +1,3 @@
-// ===== ENCAPSULATION =====
-// Base Pokemon class with private properties
 function Pokemon(name, type) {
     this.name = name;
     this.type = type;
@@ -14,8 +12,6 @@ function Pokemon(name, type) {
     };
 }
 
-// ===== CONDITIONAL EVOLVE FUNCTION =====
-// Single evolve function that checks the Pokemon's name
 function evolve() {
     console.log(`${this.name} is evolving!`);
     
@@ -52,62 +48,52 @@ function evolve() {
     }
 }
 
-// ===== INHERITANCE =====
-// Bulbassaur
 function Bulbassaur(name, type) {
     Pokemon.call(this, name, type);
     this.evolve = evolve;
 }
 
-// Ivysaur
+ Ivysaur
 function Ivysaur(name, type) {
     Pokemon.call(this, name, type);
     this.evolve = evolve;
 }
 
-// Venusaur
 function Venusaur(name, type) {
     Pokemon.call(this, name, type);
     this.evolve = evolve;
 }
 
-// Charmander
 function Charmander(name, type) {
     Pokemon.call(this, name, type);
     this.evolve = evolve;
 }
 
-// Charmeleon
 function Charmeleon(name, type) {
     Pokemon.call(this, name, type);
     this.evolve = evolve;
 }
 
-// Charizard
 function Charizard(name, type) {
     Pokemon.call(this, name, type);
     this.evolve = evolve;
 }
 
-// Squirtle
 function Squirtle(name, type) {
     Pokemon.call(this, name, type);
     this.evolve = evolve;
 }
 
-// Wartortle
 function Wartortle(name, type) {
     Pokemon.call(this, name, type);
     this.evolve = evolve;
 }
 
-// Blastoise
 function Blastoise(name, type) {
     Pokemon.call(this, name, type);
     this.evolve = evolve;
 }
 
-// ===== USAGE EXAMPLE =====
 console.log("=== Creating Pokemon ===");
 const pokemon1 = new Bulbassaur("Bulbassaur", "Grass/Poison");
 const pokemon2 = new Charmander("Charmander", "Fire");
